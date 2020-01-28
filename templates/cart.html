@@ -1,0 +1,116 @@
+{% extends "index.html" %}
+{%block content%}
+
+{% load static %}
+  
+  
+
+  <!--================Cart Area =================-->
+  <section class="cart_area">
+      <div class="container">
+          <div class="cart_inner">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Product</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Category</th>
+                              <th scope="col">Remove</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {%for order in orders%}
+                          <tr>
+                              <td>
+                                  <div class="media">
+                                      <div class="d-flex">
+                                          <img width= "250px"  height= "150px" src="{{order.product.image.url}}" alt="">
+                                      </div>
+                                      <div class="media-body">
+                                          <p>{{order.product.name}}</p>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td>
+                                  <h5>${{order.product.price}}jd</h5>
+                              </td>
+                              <td>
+                                  <div class="product_count">
+                                      <p>{{order.product.category.name}}</p>
+                                  </div>
+                              </td>
+                              <td>
+                                <form  method="POST" action="{%url 'delete' order.product.id  %}"  >{% csrf_token %}
+                                    <button  type = "submit" class="CustomButton button" >Remove From Cart</button>  
+                                    </form>   
+                                
+                              </td>
+                          </tr>
+                          <!---->
+                          {%endfor%}
+                          
+                          <tr class="bottom_button">
+                              <td>
+                                  <a class="button" href="#">Update Cart</a>
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+                                  <div class="cupon_text d-flex align-items-center">
+                                      <input type="text" placeholder="Coupon Code">
+                                      <form  method="POST">{% csrf_token %}
+                                        <button type="submit" value="submit" class="primary-btn">apply</button>
+                                      </form>
+                                      <a class="button" href="#">Have a Coupon?</a>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+                                  <h5>Subtotal</h5>
+                              </td>
+                              <td>
+                                  <h5>${{orderssum}}jd</h5>
+                              </td>
+                          </tr>
+                         
+                          <tr class="out_button_area">
+                              <td class="d-none-l">
+
+                              </td>
+                              <td class="">
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+                                  <div class="checkout_btn_inner d-flex align-items-center">
+                                      <a class="gray_btn" href="{%url 'categories' %}">Continue Shopping</a>
+                                      <form  method="POST" action="{% url 'chekout' %}">{% csrf_token %}
+                                        <button type="submit" value="submit"  class="primary-btn">Proceed to checkout</button> 
+                                    </form>
+                                      
+                                  </div>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================End Cart Area =================-->
+
+  {%endblock%}

@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Students Shop</title>
+	<link rel="icon" href="{% static 'img/Fevicon.png'  %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css'  %}">
+  <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css'  %}">
+	<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css'  %}">
+  <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css'  %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css'  %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css'  %}">
+  <style>
+ .CustomButton
+ {
+	 transition: all .4s ease !important;
+	 position: relative !important;
+	 background: #384aeb !important;
+    background-image: initial ;
+    background-position-x: initial ;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+	background-color: rgb(56, 74, 235);
+	color: white !important;
+ } 
+ .CustomButton:hover {
+    border-color: #384aeb !important;
+    background: transparent !important;
+    color: #222 !important;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="{% static 'css/style.css'  %}">
+</head>
+<body>
+  <!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html"><img width= "200px"  height= "120px" src="{% static 'img/cs.jpg' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+				<li class="nav-item "><a class="nav-link" href="{%url 'main' %}">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="{%url 'categories' %}">Shop</a></li>
+							  <li class="nav-item"><a class="nav-link" href="{%url 'contact' %}">Contact</a></li>
+			  {% if user.is_authenticated %}
+			  <li class="nav-item"><a class="nav-link" ><h4>Welcome {{user.first_name}}</h4></a></li>
+			  <li class="nav-item"><a class="nav-link" href="{%url 'logout' %}">Logout</a></li>
+			  {%else%}
+              <li class="nav-item"><a class="nav-link" href="{%url 'login' %}">Login</a></li>
+			  <li class="nav-item"><a class="nav-link" href="{%url 'reg' %}">Register</a></li>
+			  {%endif%}
+            </ul>
+            <ul class="nav-shop">
+              <li class="nav-item"><a href="{%url 'search' %}"><button><i class="ti-search"></i></button></a></li>
+              <li  class="nav-item"> <a href="{%url 'cart' %}"><button ><i class="ti-shopping-cart"></i><span  class="nav-shop__circle"></span></button> </a></li>
+			  <li class="nav-item"><a class="button button-header" href="{%url 'categories' %}">Buy Now</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+	<!--================ End Header Menu Area =================-->
+
+  <main class="site-main">
+    
+    {% block content %}
+    {% endblock %}
+  
+
+     
+
+    
+
+  </main>
+
+
+  <!--================ Start footer Area  =================-->	
+	<footer class="footer">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Our Mission</h4>
+							<p>
+							One Place For All Students To Sell There Products 
+							</p>
+							
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+						
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+					
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+								<p class="sm-head">
+									<span class="fa fa-location-arrow"></span>
+									Head Office
+								</p>
+								<p>Htu - Amman - Jordan</p>
+	
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Phone Number
+								</p>
+								<p>
+									0796681420 <br>
+								
+								</p>
+	
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									ahmadnkofahi1995@gmail.com<br>
+								
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+
+  <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js'  %}"></script>
+  <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js'  %}"></script>
+  <script src="{% static 'vendors/skrollr.min.js'  %}"></script>
+  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js'  %}"></script>
+  <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js'  %}"></script>
+  <script src="{% static 'vendors/jquery.ajaxchimp.min.js'  %}"></script>
+  <script src="{% static 'vendors/mail-script.js'  %}"></script>
+  <script src="{% static 'js/main.js'  %}"></script>
+</body>
+</html>

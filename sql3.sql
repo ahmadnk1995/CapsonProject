@@ -1,0 +1,1 @@
+drop table mainapp_producttag_tag
